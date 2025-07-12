@@ -16,12 +16,15 @@ const lessonSchema = new mongoose.Schema({
         required: true
     },
     resources: {
-        type:String
+        type:String,
     },
     order: {
         type: Number,
         required: true
-    }
+    },
+    doubt_section:[{
+        type:String
+    }]
 }, { timestamps: true });
 
 lessonSchema.index({ course: 1, order: 1 });

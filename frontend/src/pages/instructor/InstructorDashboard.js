@@ -1,7 +1,7 @@
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useEffect} from "react";
 import { useCoursesContext } from "../../hooks/useCoursesContext";
-import CourseDetails from "../../components/CourseDetails";
+import CourseCard from "../../components/CourseCard";
 import CourseForm from "../../components/CourseForm";
 
 const InstructorDashboard = () => {
@@ -30,7 +30,7 @@ const InstructorDashboard = () => {
     <h2>My Courses</h2>
     <div className="courses">
       {courses && courses.map((course) => (
-          <CourseDetails key={course._id} course={course} />
+          <CourseCard key={course._id} course={course} />
       ))}
     </div>
     <CourseForm/>

@@ -1,7 +1,8 @@
 const express = require('express');
-const { createCourse,deleteCourse, getCourse, getCourses } = require('../controllers/courseController');
-const { requireAuth } = require('../middleware/requireAuth');
-const { isInstructor } = require('../middleware/roleMiddleware.js');
+const {createCourse,deleteCourse, getCourse, getCourses, updateCourse} = require('../controllers/courseController');
+const {requireAuth} = require('../middleware/requireAuth');
+const {isInstructor} = require('../middleware/roleMiddleware.js');
+const lessonRoutes=require('./lessonRoutes.js')
 
 const router = express.Router();
 
@@ -17,6 +18,9 @@ router.get('/', requireAuth, isInstructor, getCourses);
 //get a single course for instructor
 router.get('/course/:id', requireAuth, isInstructor, getCourse);
 
+//update a course for instructor
+router.patch('/course/:id', requireAuth, isInstructor, updateCourse);
 
+router.use('/course/:id/lessons',requireAuth,isInstructor,lessonRoutes)
 
 module.exports = router;

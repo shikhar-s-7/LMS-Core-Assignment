@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import StudentDashboard from '../pages/dashboards/StudentDashboard';
+import StudentDashboard from '../pages/student/StudentDashboard';
 
 const StudentRoutes = () => {
   return (

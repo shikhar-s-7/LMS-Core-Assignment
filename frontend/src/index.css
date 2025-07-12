@@ -412,3 +412,246 @@ nav a:hover {
     grid-row: 3;
   }
 }
+
+.course-page {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 4rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Course Details Section */
+.course-page > div:first-child {
+  grid-column: 1;
+  grid-row: 1;
+  background: white;
+  border: 1px solid #e9ecef;
+  border-left: 4px solid #007bff;
+  border-radius: 4px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-left: 1rem;
+}
+
+.course-page h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.course-page > div:first-child p {
+  margin: 0.5rem 0;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Lesson Form - positioned like course form */
+.create-lesson {
+  grid-column: 2;
+  grid-row: 1 / 4;
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  height: fit-content;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 2rem;
+  max-width: 350px;
+  justify-self: end;
+}
+
+.create-lesson h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.create-lesson label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.create-lesson input[type="text"],
+.create-lesson input[type="url"],
+.create-lesson input[type="number"],
+.create-lesson textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+.create-lesson textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.create-lesson button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.create-lesson button:hover {
+  background: #0056b3;
+}
+
+/* Lessons Section */
+.lessons {
+  grid-column: 1;
+  grid-row: 2 / 4;
+  padding-left: 1rem;
+}
+
+.lessons h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+/* Lesson Card Styles - matching course card design */
+.lesson-card {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-left: 4px solid #28a745;
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.lesson-card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.lesson-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.lesson-card p {
+  margin: 0.5rem 0;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.lesson-card p:first-of-type {
+  font-weight: 500;
+  color: #495057;
+}
+
+/* Error styling for form validation */
+.create-lesson .error {
+  border-color: #dc3545;
+  background-color: #fff5f5;
+}
+
+.create-lesson .error:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.75rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design for Course Page */
+@media (max-width: 768px) {
+  .course-page {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .course-page > div:first-child {
+    grid-column: 1;
+    grid-row: 1;
+    margin-left: 0;
+    padding: 1.5rem;
+  }
+  
+  .course-page h1 {
+    font-size: 1.5rem;
+  }
+  
+  .create-lesson {
+    grid-column: 1;
+    grid-row: 2;
+    max-width: none;
+    margin-right: 0;
+    justify-self: stretch;
+  }
+  
+  .lessons {
+    grid-column: 1;
+    grid-row: 3 / 5;
+    padding-left: 0;
+  }
+  
+  .lessons h2 {
+    font-size: 1.3rem;
+  }
+  
+  .lesson-card {
+    padding: 1rem;
+  }
+  
+  .lesson-card h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .course-page {
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+  
+  .course-page > div:first-child {
+    padding: 1rem;
+  }
+  
+  .course-page h1 {
+    font-size: 1.3rem;
+  }
+  
+  .create-lesson {
+    padding: 1.5rem;
+  }
+  
+  .lesson-card {
+    padding: 0.75rem;
+  }
+}

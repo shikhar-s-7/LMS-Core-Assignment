@@ -1,4 +1,6 @@
 const Course = require('../models/courseModel');
+const Lesson = require('../models/lessonModel');
+const mongoose=require('mongoose');
 
 //create course
 const createCourse = async (req, res) => {
@@ -30,8 +32,7 @@ const createCourse = async (req, res) => {
 };
 
 //delete course
-const deleteCourse=async (req,res) => 
-  {
+const deleteCourse=async (req,res) =>{
   const { id } = req.params;
 
   try {
@@ -63,8 +64,10 @@ const getCourse = async (req, res) => {
     if (!course) {
       return res.status(404).json({ error: 'Course not found' });
     }
-
-    res.status(200).json(course);
+    const lessons = await Lesson.find({ course: id }).sort({ order: 1 });
+    res.status(200).json({course:course,
+      lessons:lessons
+    });
   } catch (error) {
     res.status(400).json({ error: 'Invalid course ID' });
   }
@@ -91,4 +94,28 @@ const getCourses = async (req, res) => {
   }
 };
 
-module.exports = { createCourse,deleteCourse,getCourse,getCourses };
+// update a course
+const updateCourse = async (req, res) => {
+  const { id } = req.params
+  try{
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({error: 'No such course'})
+    }
+
+    const course = await Course.findOneAndUpdate({_id: id}, {
+      ...req.body
+    }, {new:true})
+
+    if (!course) {
+      return res.status(404).json({error: 'No such course'})
+    }
+
+    res.status(200).json(course)
+  }
+  catch(error){
+    return res.status(400).json({error:error.message});
+  }
+  
+}
+
+module.exports = { createCourse,deleteCourse,getCourse,getCourses,updateCourse };
