@@ -38,6 +38,41 @@ export const coursesReducer = (state, action) => {
             ...state,
             lessons: state.lessons.filter((l) => l._id !== action.payload._id)
         }
+    case 'SET_DOUBTS':
+    return {
+        ...state,
+        doubts: action.payload
+    };
+
+    case 'CREATE_DOUBT':
+    return {
+        ...state,
+        doubts: [...state.doubts, action.payload]
+    };
+
+    case 'UPDATE_DOUBT':
+    return {
+        ...state,
+        doubts: state.doubts.map(doubt =>
+        doubt._id === action.payload._id ? action.payload : doubt
+        )
+    };
+
+    case 'DELETE_DOUBT':
+    return {
+        ...state,
+        doubts: state.doubts.filter(doubt => doubt._id !== action.payload._id)
+    };
+    case 'CLEAR_LESSONS':
+            return {
+                ...state,
+                lessons: []
+            };
+    case 'CLEAR_DOUBTS':
+            return {
+                ...state,
+                doubts: []
+            };
     default:
         return state
     }
@@ -46,7 +81,8 @@ export const coursesReducer = (state, action) => {
 export const CoursesContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(coursesReducer, {
         courses: [],
-        lessons:[]
+        lessons:[],
+        doubts:[]
     })
 
     return (

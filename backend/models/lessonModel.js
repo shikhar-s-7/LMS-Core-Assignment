@@ -22,11 +22,9 @@ const lessonSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    doubt_section:[{
-        type:String
-    }]
+    
 }, { timestamps: true });
 
-lessonSchema.index({ course: 1, order: 1 });
+lessonSchema.index({ course: 1, order: 1 });// first sort by course then order
 
 module.exports = mongoose.model('Lesson', lessonSchema);

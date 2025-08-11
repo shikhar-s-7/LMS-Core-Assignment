@@ -32,4 +32,15 @@ const getUser=async (req,res)=>{
     }
 }
 
-module.exports={loginUser,getUser};
+const getAllStudents=async(req,res)=>{
+    try {
+        const students = await User.find({ role: 'student' }).select('-password').sort({ createdAt: -1 });
+        res.status(200).json(students);
+    } 
+    catch (error) 
+    {
+        res.status(500).json({ error:error.message });
+    }
+}
+
+module.exports={loginUser,getUser,getAllStudents};

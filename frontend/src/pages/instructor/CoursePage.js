@@ -27,6 +27,10 @@ const CoursePage = () => {
         {
             fetchCourse();
         }
+        return () => {
+            dispatch({ type: 'CLEAR_LESSONS' });
+            dispatch({ type: 'CLEAR_DOUBTS' }); 
+        };
     }, [dispatch,user,id])
 
     //finding course
@@ -49,7 +53,7 @@ const CoursePage = () => {
             <h2>Lessons</h2>
             {
                 lessons && lessons.map((lesson) => (
-                    <LessonCard key={lesson._id} lesson={lesson} />
+                    <LessonCard key={lesson._id} lesson={lesson} courseId={id}/>
                 ))
             }
         </div>

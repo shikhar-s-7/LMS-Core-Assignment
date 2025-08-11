@@ -54,7 +54,7 @@ const deleteCourse=async (req,res) =>{
   }
 }
 
-//viewing a single course
+//viewing all lessons of a single course
 const getCourse = async (req, res) => {
   const { id } = req.params;
 
@@ -118,4 +118,16 @@ const updateCourse = async (req, res) => {
   
 }
 
-module.exports = { createCourse,deleteCourse,getCourse,getCourses,updateCourse };
+//get all courses regardless of instructor
+const getAllCourses =async (req,res) => {
+  try {
+    const courses = await Course.find({}).sort({ createdAt: -1 });
+    res.status(200).json(courses);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
+
+
+module.exports = { createCourse,deleteCourse,getCourse,getCourses,updateCourse,getAllCourses };
