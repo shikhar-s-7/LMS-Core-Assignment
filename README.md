@@ -12,13 +12,13 @@
 3. Dashboards(only instructor for now, others are placeholders)
 4. Course Structures 
 5. Lesson structures
+6. Doubt Section
+7. Video Playback
 
 ## Features left
-1. Doubt section below lesson
-2. Assignments
-3. Quizzes
-4. Admin Panel
-5. Student Dashboard
-6. Video Playback
-7. Certificate Generation
+1. Assignments
+2. Quizzes
+3. Admin Panel
+4. Student Dashboard
+5. Certificate Generation
 
