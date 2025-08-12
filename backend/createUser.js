@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const User = require('./models/userModel.js');
-const mongouri="mongodb+srv://shikharsrivastava736:qURqCqShCM5aLpjF@lms-mern.5hpnyej.mongodb.net/?retryWrites=true&w=majority&"
+const mongouri="no"
 
 
 dotenv.config();
